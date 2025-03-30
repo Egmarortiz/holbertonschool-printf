@@ -19,12 +19,14 @@ int print_string(va_list args)
 		str = "(null)";
 
 		for (i = 0; str[i] != '\0'; i++)
+		{
 			count += _putchar(str[i]);
-
+		}
 		return (count);
 	}
+}
 
-	int print_percent(void)
-	{
-		return (_putchar('%'));
-	}
+int print_percent(void)
+{
+	return (_putchar('%'));
+}
