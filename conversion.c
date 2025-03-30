@@ -1,27 +1,30 @@
-#include "_printf.h"
+#include "main.h"
+#include <stddef.h>
 #include <stdarg.h>
 
 int print_char(va_list args)
 {
-    char c = (char)va_arg(args,int);
-    return (_putchar(c));
+	char c = (char)va_arg(args,int);
+	return (_putchar(c));
 }
 
 int print_string(va_list args)
 {
-    char *str = va arg(args, char*);
-    int count = 0;
+	char *str = va_arg(args, char*);
+	int count = 0;
+	int i;
 
-    if (str == NULL)
-	str = "(null)";
+	if (str == NULL)
+	{
+		str = "(null)";
 
-    for (int i = 0; str [i]; i++)
-	count += _putchar(str[i]);
+		for (i = 0; str[i] != '\0'; i++)
+			count += _putchar(str[i]);
 
-    return (count);
+		return (count);
+	}
 
-int print_percent(void)
-{
-    return (_putchar('%'));
-}
-
+	int print_percent(void)
+	{
+		return (_putchar('%'));
+	}
