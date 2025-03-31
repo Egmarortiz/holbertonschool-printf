@@ -2,12 +2,6 @@
 #include <stddef.h>
 #include <stdarg.h>
 
-/**
- * print_char - Prints a character from a va_list.
- * @args: A va_list containing the character to print.
- *
- * Return: The number of characters printed.
- */
 
 int print_char(va_list args)
 {
@@ -16,12 +10,6 @@ int print_char(va_list args)
 	return (_putchar(c));
 }
 
-/**
- * print_string - Prints a string from a va_list.
- * @args: A va_list containing the string to print.
- *
- * Return: The number of characters printed.
- */
 int print_string(va_list args)
 {
 	char *str = va_arg(args, char*);
@@ -45,12 +33,36 @@ int print_string(va_list args)
 }
 
 
-/**
- * print_percent - Prints a percent sign.
- *
- * Return: The number of characters printed.
- */
 int print_percent(void)
 {
 	return (_putchar('%'));
+}
+
+int print_int(va_list args)
+{
+    int num = va_arg(args, int);
+    unsigned int abs_num;
+    int div = 1, len = 0;
+
+if (num < 0)
+    {
+        len += _putchar('-');
+        abs_num = -num;         
+    }
+    else
+    {
+        abs_num = num;
+    }
+
+while (abs_num / div > 9)
+        div *= 10;
+
+while (div != 0)
+    {
+        len += _putchar('0' + (abs_num / div));
+        abs_num %= div;
+        div /= 10;                               
+    }
+    
+    return (len);
 }
